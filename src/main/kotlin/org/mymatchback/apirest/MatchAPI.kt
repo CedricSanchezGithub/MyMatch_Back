@@ -28,9 +28,8 @@ class MymatchAPI(val matchService: MatchService){
 
     //  Une url pour faire évoluer le score du matche ou le déclarer fini
     @PostMapping("/score")
-    fun createScore(@RequestBody match: MatchBean){
-
-
+    fun add1Point(@RequestBody match: MatchBean,equipe:String){
+        matchService.add1Point(match, equipe)
 
     }
     //   Une url pour récupérer la liste des matches des 7 derniers jours avec les plus récents en 1er
