@@ -1,15 +1,17 @@
 package org.mymatchback.apirest
 
 import org.mymatchback.model.MatchBean
+import org.mymatchback.model.MatchService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
 
 @RestController
 @RequestMapping("/mymatch")
-class MymatchAPI{
+class MymatchAPI(val matchService: MatchService){
 
     var tabMatch = List<MatchBean?>(10) {null}
 
@@ -17,10 +19,21 @@ class MymatchAPI{
 
     //http://localhost:8080/mymatch/create
     @PostMapping("/create")
-    fun createMatch(@RequestBody equipe1: String, equipe2: String, date: LocalDate){
+    fun createMatch(@RequestBody match: MatchBean){
+
+        println("/save match = $match")
+        matchService.createMatch(equipe1 = match.equipe1, equipe2 = match.equipe2, date = match.date)
+
+    }
+
+    //  Une url pour faire évoluer le score du matche ou le déclarer fini
+    @PostMapping("/score")
+    fun createScore(@RequestBody match: MatchBean){
 
 
 
     }
+    //   Une url pour récupérer la liste des matches des 7 derniers jours avec les plus récents en 1er
+
 }
 
