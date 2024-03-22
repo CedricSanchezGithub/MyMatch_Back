@@ -38,5 +38,19 @@ class MatchService(val matchRep:MatchRepository) {
         matchRep.save(match)
         return match
     }
+    fun add1Point(match: MatchBean, equipe:String):MatchBean{
+        if(match.status==false){
+            throw Exception("Le match est finis")
+        }else{
+            if (equipe.equals(match.equipe1)){
+                match.score_equipe1++
+            }else{
+                match.score_equipe2++
+            }
+        }
+        matchRep.save(match)
+        return match
+    }
+
 }
 
