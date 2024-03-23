@@ -1,34 +1,19 @@
-My Match - Suivi des matchs de handball
-Description
-My Match est une application de suivi des matchs de handball qui permet aux utilisateurs de suivre les scores en direct, de consulter les calendriers des matchs à venir, de recevoir des notifications pour les matchs importants, et bien plus encore.
+# Mymatch API
 
-Fonctionnalités
-Suivi des scores en direct
-Calendrier des matchs
-Notifications pour les matchs importants
-Statistiques des équipes et des joueurs
-Partage des résultats sur les réseaux sociaux
-Interface conviviale et facile à utiliser
-Captures d'écran
+Ceci est le backend de l'application Mymatch, une application de gestion de matchs sportifs.
 
-Description de la capture d'écran 1
+## À propos
 
+Mymatch API est un composant clé du projet d'étude 'myMatch', un projet d'étude collaboratif 
 
-Description de la capture d'écran 2
+## Fonctionnalités
 
-Installation
-Pour installer My Match sur votre appareil Android, suivez les étapes suivantes :
+- **Création de matchs** : Permet aux utilisateurs de créer un match en fournissant les deux équipes et la date du match.
+- **Gestion du score** : Les utilisateurs peuvent mettre à jour le score des matchs ou marquer un match comme terminé.
+- **Liste des matchs des 7 derniers jours** : Les utilisateurs peuvent consulter la liste des matchs des 7 derniers jours, avec les matchs les plus récents affichés en premier.
 
-Téléchargez le fichier APK à partir du lien fourni.
-Ouvrez le fichier APK sur votre appareil.
-Suivez les instructions à l'écran pour installer l'application.
-Une fois l'installation terminée, vous pouvez ouvrir l'application depuis votre écran d'accueil.
-Configuration requise
-Android 5.0 (Lollipop) ou version ultérieure
-Connexion Internet pour les mises à jour en direct des scores et des matchs
-Support et contributeurs
-Si vous rencontrez des problèmes avec l'application ou si vous souhaitez contribuer au projet, veuillez contacter l'équipe de développement à l'adresse suivante : support@mymatch.com
+## Technologies Utilisées
 
-Licence
-My Match est distribué sous la licence MIT. Pour plus d'informations, veuillez consulter le fichier LICENSE.
-
+- **Backend** : Kotlin avec Spring Boot pour la logique serveur et l'accès aux données.
+- **Base de données** : Utilisation de JPA (Java Persistence API) pour la gestion des entités et l'interaction avec la base de données MySQL.
+- **Frontend** : Une interface utilisateur correspondante est [développée ici](https://github.com/CedricSanchezGithub/MyMatch)
