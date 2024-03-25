@@ -39,7 +39,6 @@ class MymatchAPI(val matchService: MatchService){
     //   Une url pour récupérer la liste des matches des 7 derniers jours avec les plus récents en 1er
 
 
-
     @GetMapping("/7dayz")
     fun lastSevenDayz() : List<MatchBean>{
         val THISDAY = System.currentTimeMillis()
