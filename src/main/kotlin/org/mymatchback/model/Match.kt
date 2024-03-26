@@ -26,7 +26,11 @@ interface MatchRepository : JpaRepository<MatchBean, Long>{
 
     fun findAllByDateAfterOrderByDateDesc(date: Long):  List<MatchBean>
 
+
 }
+
+
+
 
 @Service
 class MatchService(val matchRep:MatchRepository) {
@@ -61,6 +65,8 @@ class MatchService(val matchRep:MatchRepository) {
 
     //Retourne les 7 derniers matchs trié par date
     fun last7Dayz(date: Long) = matchRep.findAllByDateAfterOrderByDateDesc(date = date)
+
+
 
 }
 
