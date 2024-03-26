@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-        const val SEVENDAYZ = 604_800_000
+const val SEVENDAYZ = 604_800_000
 
 @RestController
 @RequestMapping("/mymatch")
