@@ -25,7 +25,7 @@ data class MatchBean(
 interface MatchRepository : JpaRepository<MatchBean, Long>{
 
     fun findAllByDateAfterOrderByDateDesc(date: Long):  List<MatchBean>
-
+    fun findByIdMatches(idMatch: Long):MatchBean
 }
 
 @Service
@@ -48,14 +48,15 @@ class MatchService(val matchRep:MatchRepository) {
     }
 
     //Incrémente 1 point à l'équipe
-    fun add1Point(match: MatchBean, equipe:Int):Int{
+    fun add1Point(idMatch: Long, equipe:Int):MatchBean{
+        var match= matchRep.findByIdMatches(idMatch)
         if(!match.status){
             throw Exception("Le match est finis")
         }else{
             if (equipe == 1) match.score_equipe1++ else match.score_equipe2++
         }
         matchRep.save(match)
-        if (equipe == 1) return match.score_equipe1 else return match.score_equipe2
+        return match
     }
 
 
