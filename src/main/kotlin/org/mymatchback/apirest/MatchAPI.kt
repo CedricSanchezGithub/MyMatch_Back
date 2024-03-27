@@ -49,17 +49,15 @@ class MymatchAPI(val matchService: MatchService){
     }
 
     //Déclarer le status du match
-    //http://localhost:8080/mymatch/status
+    //http://localhost:8080/mymatch/statusover
     @GetMapping("/statusover")
     fun setStatusOver(@RequestBody match: MatchBean) {
-        match.status = true
-        println("statusover : ${match.status}" )
+        return matchService.setStatusOver(match)
     }
+    //http://localhost:8080/mymatch/statusNotover
     @GetMapping("/statusNotover")
     fun setStatusNotOver(@RequestBody match: MatchBean) {
-        match.status = false
-        println("statusNotover : ${match.status}" )
-
+        return matchService.setStatusNotOver(match)
     }
 }
 

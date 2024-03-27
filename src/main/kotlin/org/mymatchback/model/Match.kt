@@ -4,7 +4,8 @@ import jakarta.persistence.*
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import org.springframework.stereotype.Service
-
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestBody
 
 
 @Entity
@@ -64,7 +65,14 @@ class MatchService(val matchRep:MatchRepository) {
     fun last7Dayz(date: Long) = matchRep.findAllByDateAfterOrderByDateDesc(date = date)
 
     //Match terminé
+    fun setStatusOver(match: MatchBean) {
+        match.status = true
+        println("statusover : ${match.status}" )
+    }
+    fun setStatusNotOver(match: MatchBean) {
+        match.status = false
+        println("statusNotover : ${match.status}" )
 
-
+    }
 }
 
