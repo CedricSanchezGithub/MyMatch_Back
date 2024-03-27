@@ -27,7 +27,7 @@ interface MatchRepository : JpaRepository<MatchBean, Long>{
 
     fun findAllByDateAfterOrderByDateDesc(date: Long):  List<MatchBean>
 
-    fun findByIdMatches(idMatch: Long):MatchBean
+    fun findByid(id: Long) : MatchBean
 
 }
 
@@ -52,7 +52,7 @@ class MatchService(val matchRep:MatchRepository) {
 
     //Incrémente 1 point à l'équipe
     fun add1Point(idMatch: Long, equipe:Int):MatchBean{
-        var match= matchRep.findByIdMatches(idMatch)
+        var match= matchRep.findByid(idMatch)
         if(!match.status){
             throw Exception("Le match est finis")
         }else{

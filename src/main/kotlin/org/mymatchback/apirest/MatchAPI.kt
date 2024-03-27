@@ -21,11 +21,11 @@ class MymatchAPI(val matchService: MatchService){
 
     // Une url pour créer un matche en donnant les 2 équipes et la date
     //http://localhost:8080/mymatch/create
-    @PostMapping("/create")
+    @PostMapping("/creatematch")
     fun createMatch(@RequestBody match: MatchBean){
 
         println("/save match = $match")
-        match.date?.let { matchService.createMatch(equipe1 = match.equipe1, equipe2 = match.equipe2, date = it) }
+        match.date?.let { matchService.createMatch(date = it, equipe1 = match.equipe1, equipe2 = match.equipe2 ) }
 
     }
 
@@ -43,6 +43,7 @@ class MymatchAPI(val matchService: MatchService){
 
     @GetMapping("/7dayz")
     fun lastSevenDayz() : List<MatchBean>{
+
         val THISDAY = System.currentTimeMillis()
         val daySearch = THISDAY - SEVENDAYZ
         return matchService.last7Dayz(date = daySearch)
@@ -54,6 +55,7 @@ class MymatchAPI(val matchService: MatchService){
     fun setStatusOver(@RequestBody match: MatchBean) {
         return matchService.setStatusOver(match)
     }
+
     //http://localhost:8080/mymatch/statusNotover
     @GetMapping("/statusNotover")
     fun setStatusNotOver(@RequestBody match: MatchBean) {
