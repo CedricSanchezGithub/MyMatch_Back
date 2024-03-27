@@ -33,9 +33,9 @@ class MymatchAPI(val matchService: MatchService){
     //http://localhost:8080/mymatch/score
 
     @PostMapping("/score")
-    fun add1Point(@RequestBody match: MatchBean,equipe:Int){
-        println("/score : ${matchService.add1Point(match, equipe)}")
-        matchService.add1Point(match, equipe)
+    fun add1Point(@RequestBody idMatch: Long,equipe:Int){
+        println("/score : ${matchService.add1Point(idMatch, equipe)}")
+        matchService.add1Point(idMatch, equipe)
     }
 
     //   Une url pour récupérer la liste des matches des 7 derniers jours avec les plus récents en 1er
