@@ -24,11 +24,8 @@ data class MatchBean(
 
 @Repository
 interface MatchRepository : JpaRepository<MatchBean, Long>{
-
     fun findAllByDateAfterOrderByDateDesc(date: Long):  List<MatchBean>
-
     fun findByid(id: Long) : MatchBean
-
 }
 
 @Service
@@ -52,7 +49,7 @@ class MatchService(val matchRep:MatchRepository) {
 
     //Incrémente 1 point à l'équipe
     fun add1Point(idMatch: Long, equipe:Int):MatchBean{
-        var match= matchRep.findByid(idMatch)
+        val match= matchRep.findByid(idMatch)
         if(!match.status){
             throw Exception("Le match est finis")
         }else{
@@ -67,14 +64,10 @@ class MatchService(val matchRep:MatchRepository) {
     fun last7Dayz(date: Long) = matchRep.findAllByDateAfterOrderByDateDesc(date = date)
 
     //Match terminé
-    fun setStatusOver(match: MatchBean) {
-        match.status = true
+    fun setStatusOver(idMatch: Long) {
+        val match=matchRep.findByid(idMatch)
+        if (match.status == true) match.status=false else match.status=true
         println("statusover : ${match.status}" )
-    }
-    fun setStatusNotOver(match: MatchBean) {
-        match.status = false
-        println("statusNotover : ${match.status}" )
-
     }
 }
 
