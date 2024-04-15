@@ -2,11 +2,7 @@ package org.mymatchback.apirest
 
 import org.mymatchback.model.MatchBean
 import org.mymatchback.model.MatchService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 const val SEVENDAYZ = 604_800_000
 
@@ -33,8 +29,7 @@ class MymatchAPI(val matchService: MatchService){
     //http://localhost:8080/mymatch/score
 
     @PostMapping("/score")
-    fun add1Point(@RequestBody idMatch: Long,equipe:Int){
-        println("/score : ${matchService.add1Point(idMatch, equipe)}")
+    fun add1Point(@RequestParam idMatch: Long, equipe:Int){
         matchService.add1Point(idMatch, equipe)
     }
 
@@ -51,9 +46,14 @@ class MymatchAPI(val matchService: MatchService){
 
     //Déclarer le status du match
     //http://localhost:8080/mymatch/statusover
-    @GetMapping("/statusover")
+    @PostMapping("/statusover")
     fun setStatusOver(@RequestBody idMatch: Long) {
         return matchService.setStatusOver(idMatch)
+    }
+
+    @DeleteMapping("/deletematch/{id}")
+    fun deleteMatch(@PathVariable id: Long) {
+        matchService.deleteMatch(id)
     }
 
 }

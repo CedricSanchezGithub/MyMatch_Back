@@ -20,7 +20,9 @@ data class MatchBean(
     var equipe2: String = "Equipe 2",
     var score_equipe1: Int = 0,
     var score_equipe2: Int = 0,
-    var status: Boolean = false)
+    var status: Boolean = true)
+
+
 
 @Repository
 interface MatchRepository : JpaRepository<MatchBean, Long>{
@@ -66,8 +68,12 @@ class MatchService(val matchRep:MatchRepository) {
     //Match terminé
     fun setStatusOver(idMatch: Long) {
         val match=matchRep.findByid(idMatch)
-        if (match.status == true) match.status=false else match.status=true
-        println("statusover : ${match.status}" )
+        match.status = !match.status
+        matchRep.save(match)
+        println("Status switch : switch effecté" )
+    }
+    fun deleteMatch(id: Long) {
+        matchRep.deleteById(id)
     }
 }
 
